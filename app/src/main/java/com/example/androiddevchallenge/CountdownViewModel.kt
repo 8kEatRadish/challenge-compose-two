@@ -1,3 +1,18 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge
 
 import android.app.Application
@@ -7,9 +22,9 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import kotlinx.coroutines.delay
 
 class CountdownViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -33,7 +48,7 @@ class CountdownViewModel(application: Application) : AndroidViewModel(applicatio
         false
     )
 
-    //倒计时暂停
+    // 倒计时暂停
     fun stopDownCount() {
         job?.apply {
             if (this.isActive) {
@@ -44,7 +59,7 @@ class CountdownViewModel(application: Application) : AndroidViewModel(applicatio
         isRun.value = false
     }
 
-    //设置时间
+    // 设置时间
     fun setTime(timeType: TimeType) {
         if (isRun.value) {
             "Please reset after setting".toast()
@@ -66,7 +81,7 @@ class CountdownViewModel(application: Application) : AndroidViewModel(applicatio
         }
     }
 
-    //复位
+    // 复位
     fun resetTime() {
         if (isRun.value) {
             stopDownCount()
@@ -76,9 +91,9 @@ class CountdownViewModel(application: Application) : AndroidViewModel(applicatio
         setTime(TimeType.NULL)
     }
 
-    //倒计时
+    // 倒计时
     fun downFromCount() {
-        //记录秒数
+        // 记录秒数
         var res = 0
 
         counts.value.forEachIndexed { index, i ->

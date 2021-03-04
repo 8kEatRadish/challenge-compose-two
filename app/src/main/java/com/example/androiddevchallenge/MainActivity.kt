@@ -30,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         this.window.setFlags(
             WindowManager.LayoutParams.FLAG_FULLSCREEN,
             WindowManager.LayoutParams.FLAG_FULLSCREEN
-        );
+        )
         setContent {
             MyTheme() {
                 MyApp()
