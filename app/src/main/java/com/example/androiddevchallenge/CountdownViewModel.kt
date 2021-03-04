@@ -5,7 +5,11 @@ import android.widget.Toast
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import kotlinx.coroutines.delay
 
 class CountdownViewModel(application: Application) : AndroidViewModel(application) {
 
@@ -32,8 +36,8 @@ class CountdownViewModel(application: Application) : AndroidViewModel(applicatio
     //倒计时暂停
     fun stopDownCount() {
         job?.apply {
-            if (job.isActive) {
-                job.cancel()
+            if (this.isActive) {
+                this.cancel()
             }
         }
 
